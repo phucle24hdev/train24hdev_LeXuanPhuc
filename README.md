@@ -32,14 +32,14 @@ group-B: rx
 các user còn lại: r
 
 Các giá trị:
-    0: Không được phép thực hiện bất kỳ quyền nào
-    1: Thực thi
-    2: Viết
-    3: Viết và thực thi
-    4: Đọc
-    5: Đọc và thực thi
-    6: Đọc và viết
-    7: Đọc, viết và thực thi
+- 0: Không được phép thực hiện bất kỳ quyền nào
+- 1: Thực thi
+- 2: Viết
+- 3: Viết và thực thi
+- 4: Đọc
+- 5: Đọc và thực thi
+- 6: Đọc và viết
+- 7: Đọc, viết và thực thi
 ```
 - sudo chown -R user-A:group-B example.txt
 - sudo chmod -R 754 example.txt
