@@ -12,5 +12,6 @@
 - sudo usermod -g group-A user-A
 - sudo usermod -g group-A user-B
 - sudo usermod -g group-B user-C
-
 ![](./images/groupadd.png)
+
+## Tạo 1 file example.txt với phân quyền user-A có  read write exec, group-2 chỉ có read và exec. Các user còn lại có thể read.  Thử login vào user-C và sửa đổi file example.txt điều gì sẽ xảy ra?
