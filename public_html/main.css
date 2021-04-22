@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 13px;
+}
+
+.form-btn {
+    width: 180px;
+    display: block;
+    height: auto;
+    padding: 15px;
+    color: #fff;
+    background: #8BC3A3;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    margin: auto;
+}
+
+.form-btn:hover {
+    background: #111;
+    color: white;
+    border: none;
+}
+
+.email {
+    height: 200px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+.email:focus {
+    outline: none;
+    border: 1px solid #8BC3A3;
+}

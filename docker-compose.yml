@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    environment: 
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - nginxphp
+
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./public_html:/public_html
+    ports: 
+      - "9000:9000"
+    networks:
+      - nginxphp
+    depends_on:
+      - mysql
+      - mailhog
+
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public_html:/public_html
+      - ./conf.d:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime
+    networks:
+      - nginxphp
+    depends_on:
+      - php
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+      - "8082:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+      - PHP_UPLOAD_MAX_FILESIZE=100MB
+    networks:
+      - nginxphp
+
+  mailhog:
+    image: mailhog/mailhog
+    ports: 
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - nginxphp
+
+networks:
+  nginxphp:
