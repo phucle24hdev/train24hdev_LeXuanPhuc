@@ -44,9 +44,10 @@ if (isset($_POST['email']) && $_POST['email'] !== '') {
 
 function updateEmail($conn, $arrayEmail)
 {
+
     foreach ($arrayEmail as $i)
     {
-        if(validateEmail($i) == true)
+        if(validateEmail(trim($i)) == true)
         {
             $sql = "INSERT INTO email (email) SELECT * FROM (SELECT '$i') AS e WHERE NOT EXISTS ( SELECT email FROM email WHERE email = '$i' ) LIMIT 1;";
             $result = $conn->query($sql);
@@ -89,8 +90,11 @@ function alert($msg) {
 }
 
 function validateEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL))
+        return true;
+    return false;
 }
+
 
 $conn->close();
 
